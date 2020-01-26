@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fire from '../../../config/Fire';
+import { fire } from '../../../config/Fire';
 import StyledFireBaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import Aux from '../../../hoc/Aux/Aux';
 import firebase from 'firebase';
@@ -7,9 +7,12 @@ import firebase from 'firebase';
 class OAuthButton extends Component {
   uiConfig = {
     signInFlow: 'popup',
-    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+    signInOptions: [
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      firebase.auth.GoogleAuthProvider.ca,
+    ],
     callbacks: {
-      signInSuccess: () => false,
+      signInSuccessWithAuthResult: () => false,
     },
   };
 

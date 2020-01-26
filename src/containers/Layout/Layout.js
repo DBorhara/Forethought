@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import styles from './Layout.module.css';
-import fire from '../../config/Fire';
+// import styles from './Layout.module.css';
+import { fire } from '../../config/Fire';
 import Home from '../../components/Home/Home';
 import Login from '../Login/Login';
+import UserNavbar from '../../components/Navbar/UserNavBar/UserNavbar';
+import GuestNavbar from '../../components/Navbar/GuestNavbar/GuestNavbar';
+import Aux from '../../hoc/Aux/Aux';
 
 class Layout extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       user: null,
     };
@@ -19,7 +22,6 @@ class Layout extends Component {
 
   authListener() {
     fire.auth().onAuthStateChanged(user => {
-      console.log(user);
       if (user) {
         this.setState({ user });
         // localStorage.setItem('user', user.uid);
@@ -49,9 +51,15 @@ class Layout extends Component {
     return (
       <div>
         {this.state.user ? (
-          <Home logoutHandler={this.logoutHandler} />
+          <Aux>
+            <UserNavbar logoutHandler={this.logoutHandler}></UserNavbar>
+            <Home />
+          </Aux>
         ) : (
-          <Login />
+          <Aux>
+            <GuestNavbar></GuestNavbar>
+            <Login />
+          </Aux>
         )}
       </div>
     );

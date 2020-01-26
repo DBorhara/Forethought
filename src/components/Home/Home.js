@@ -1,25 +1,33 @@
 import React, { Component } from 'react';
-import fire from '../../config/Fire';
-import axios from 'axios';
-import Navbar from '../Navbar/Navbar';
+// import { fire, db, auth } from '../../config/Fire';
+// import axios from 'axios';
+// import UserNavbar from '../Navbar/UserNavBar/UserNavbar';
+import firebase from 'firebase';
+import Aux from '../../hoc/Aux/Aux';
+// import { FirebaseAuth } from 'react-firebaseui';
 
 class Home extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: {},
+    };
+    console.log('User Name');
   }
 
-  handleLogoutClick = () => {
-    axios.delete();
-    this.props.logoutHandler();
-  };
+  handleGetUserData = () => {};
+
+  componentDidMount() {
+    console.log(firebase.auth().currentUser);
+  }
 
   render() {
     return (
-      <div className="col-md-6">
-        <Navbar></Navbar>
-
-        <button onClick={() => this.handleLogoutClick()}>logout</button>
-      </div>
+      <Aux className="col-md-6">
+        <img src={firebase.auth().currentUser.photoURL} alt="Profile Pic" />
+        Welcome
+        {firebase.auth().currentUser.displayName}
+      </Aux>
     );
   }
 }

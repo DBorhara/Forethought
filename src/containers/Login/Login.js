@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import fire from '../../config/Fire';
+import { fire } from '../../config/Fire';
 import OAuthButton from '../../components/UI/OAuthButton/OAuthButton';
+import styles from './Login.module.css';
+import { Button } from 'react-bootstrap';
+
+// import UserNavbar from '../../components/Navbar/UserNavBar/UserNavbar';
 
 class Login extends Component {
   constructor(props) {
@@ -10,6 +13,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      isLoggedIn: false,
     };
   }
 
@@ -22,7 +26,7 @@ class Login extends Component {
     fire
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(u => {})
+      .then(user => {})
       .catch(error => {
         console.log(error);
       });
@@ -33,18 +37,18 @@ class Login extends Component {
     fire
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(u => {})
-      .then(u => {
-        console.log(u);
+      .then(user => {
+        console.log(user);
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   };
+
   render() {
     return (
       <div>
-        <form>
+        <form className={styles.Login}>
           <div>
             <label>Email address</label>
             <input
@@ -56,7 +60,6 @@ class Login extends Component {
               aria-describedby="emailHelp"
               placeholder="Enter email"
             />
-            <small>We'll never share your email with anyone else.</small>
           </div>
           <div>
             <label htmlFor="exampleInputPassword1">Password</label>
@@ -69,16 +72,16 @@ class Login extends Component {
               placeholder="Password"
             />
           </div>
-          <button type="submit" onClick={this.login}>
+          <Button type="submit" onClick={this.login} variant="success">
             Login
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={this.signup}
             style={{ marginLeft: '25px' }}
-            className="btn btn-success"
+            variant="danger"
           >
             Signup
-          </button>
+          </Button>
           <OAuthButton />
         </form>
       </div>

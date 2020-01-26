@@ -12,5 +12,10 @@ const config = {
 };
 
 const fire = firebase.initializeApp(config);
+const auth = new firebase.auth.GoogleAuthProvider();
+auth.addScope('https://www.googleapis.com/auth/calendar');
+auth.addScope('https://www.googleapis.com/auth/tasks');
+const db = firebase.firestore();
+// db.settings({ timestampsInSnapshots: true });
 
-export default fire;
+export { db, fire, auth };

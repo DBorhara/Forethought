@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import Aux from '../../hoc/Aux/Aux';
+import Aux from '../../../hoc/Aux/Aux';
+import styles from './GuestNavbar.module.css';
 
-class Navbar extends Component {
+class GuestNavbar extends Component {
   render() {
     return (
       <Aux>
-        <ul className="nav">
+        <ul className={styles.nav}>
           <li>
-            <a href="#">Home</a>
+            <a href="/home">Login</a>
           </li>
           <li>
             <a href="#">About</a>
@@ -18,9 +19,13 @@ class Navbar extends Component {
           <li>
             <a href="#">Contact</a>
           </li>
+          <li>
+            <a href="#">Demo</a>
+          </li>
         </ul>
       </Aux>
     );
   }
 }
-export default Navbar;
+
+export default GuestNavbar;
