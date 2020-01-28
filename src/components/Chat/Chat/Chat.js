@@ -17,15 +17,14 @@ class Chat extends Component {
     });
   }
 
-  handleLogOut() {
-    firebase.auth().signOut();
-  }
-
   render() {
     return (
       <div className={styles.chat}>
         <div className={styles.chat__header}>
-          <h2>Leave a Message For Your Circle</h2>
+          <h2>
+            Stackathon Demo: OAuth in at
+            https://forethought-149c2.firebaseapp.com/#/home
+          </h2>
         </div>
         <div className={styles.chat__list}>
           <Form user={this.state.user} />
@@ -35,12 +34,3 @@ class Chat extends Component {
   }
 }
 export default Chat;
-
-// {/*
-//   <button
-//     className="chat__button"
-//     onClick={this.handleLogOut.bind(this)}
-//   >
-//     Logout
-//   </button>*/}
-// {/*<img src={logo} className="chat__logo" alt="logo" />*/}
