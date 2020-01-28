@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
-import Aux from '../../../hoc/Aux/Aux';
-import styles from './UserNavbar.module.css';
+import MyCalendar from '../../Calendar/Calendar';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 import axios from 'axios';
-// import Layout from '../../../containers/Layout/Layout';
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Form,
+  FormControl,
+  Button,
+  Container,
+} from 'react-bootstrap';
 
 class UserNavbar extends Component {
   constructor(props) {
@@ -20,30 +29,32 @@ class UserNavbar extends Component {
 
   render() {
     return (
-      <Aux>
-        <ul className={styles.nav}>
-          <li>
-            <a href="/home">Home</a>
-          </li>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">FAQ</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-          <li>
-            <a href="#">My Account</a>
-          </li>
-          <li onClick={() => this.handleLogoutClick()}>
-            <a href="#">Logout</a>
-          </li>
-        </ul>
-      </Aux>
+      <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+        <Navbar.Brand href="#home">Project Forethought</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Nav.Link href="#calendar">Calendar</Nav.Link>
+            <Nav.Link href="#tasks">Tasks</Nav.Link>
+            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Circles</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Squares</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Triangles</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Chat</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Nav>
+            <Nav.Link href="#myAccount">My Account</Nav.Link>
+            <Nav.Link eventKey={2} onClick={() => this.handleLogoutClick()}>
+              Logout
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
 
+// onClick={() => this.handleLogoutClick()
 export default UserNavbar;

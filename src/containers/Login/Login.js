@@ -72,13 +72,13 @@ class Login extends Component {
               placeholder="Password"
             />
           </div>
-          <Button type="submit" onClick={this.login} variant="success">
+          <Button type="submit" onClick={this.login}>
             Login
           </Button>
           <Button
             onClick={this.signup}
             style={{ marginLeft: '25px' }}
-            variant="danger"
+            className="btn btn-success"
           >
             Signup
           </Button>

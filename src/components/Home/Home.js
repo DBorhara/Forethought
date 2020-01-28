@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-// import { fire, db, auth } from '../../config/Fire';
-// import axios from 'axios';
-// import UserNavbar from '../Navbar/UserNavBar/UserNavbar';
+import { fire, db, auth } from '../../config/Fire';
+import axios from 'axios';
+import UserNavbar from '../Navbar/UserNavBar/UserNavbar';
 import firebase from 'firebase';
 import Aux from '../../hoc/Aux/Aux';
-// import { FirebaseAuth } from 'react-firebaseui';
 
 class Home extends Component {
   constructor(props) {
@@ -12,21 +11,29 @@ class Home extends Component {
     this.state = {
       user: {},
     };
-    console.log('User Name');
   }
 
-  handleGetUserData = () => {};
-
   componentDidMount() {
-    console.log(firebase.auth().currentUser);
+    console.log(firebase.auth.currentUser);
   }
 
   render() {
     return (
       <Aux className="col-md-6">
-        <img src={firebase.auth().currentUser.photoURL} alt="Profile Pic" />
-        Welcome
-        {firebase.auth().currentUser.displayName}
+        <img
+          src={
+            fire.auth().currentUser.photoURL
+              ? fire.auth().currentUser.photoURL
+              : 'https://spotlightmedia.com/wp-content/uploads/2015/07/ClientLogincol2.png'
+          }
+          alt="Profile Pic"
+        />
+        <p>
+          Welcome,{' '}
+          {firebase.auth().currentUser.displayName
+            ? firebase.auth().currentUser.displayName
+            : 'NO NAME MCGEE'}
+        </p>
       </Aux>
     );
   }

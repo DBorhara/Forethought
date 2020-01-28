@@ -7,9 +7,10 @@ import firebase from 'firebase';
 class OAuthButton extends Component {
   uiConfig = {
     signInFlow: 'popup',
-    signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.GoogleAuthProvider.ca,
+    signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+    scopes: [
+      'https://www.googleapis.com/auth/calendar',
+      'https://www.googleapis.com/auth/tasks',
     ],
     callbacks: {
       signInSuccessWithAuthResult: () => false,

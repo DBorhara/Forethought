@@ -1,28 +1,41 @@
 import React, { Component } from 'react';
 
-class Calendar extends Component {
-  constructor(props) {
-    super(props);
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import moment from 'moment';
+
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+import { getEvents } from '../../config/gcal';
+
+const localizer = momentLocalizer(moment);
+
+class MyCalendar extends Component {
+  constructor() {
+    super();
     this.state = {
-      isLoaded: false,
-      placeholder: [],
+      events: [],
     };
   }
 
   componentDidMount() {
-    fetch('')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          isLoaded: true,
-          placeholder: json,
-        });
-      });
+    getEvents(events => {
+      this.setState({ events });
+    });
   }
 
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <Calendar
+          localizer={localizer}
+          events={this.state.events}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: 500 }}
+        />
+      </div>
+    );
   }
 }
 
-export default Calendar;
+export default MyCalendar;
