@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import './Form.module.css';
 import Message from '../Message/Message';
 import firebase from 'firebase';
+import styles from './Form.module.css';
+// import { Form } from 'react-bootstrap';
 
 class Form extends Component {
   constructor(props) {
@@ -55,22 +57,25 @@ class Form extends Component {
 
   render() {
     return (
-      <div className="form">
-        <div className="form__message">
+      <div className={styles.form}>
+        <div className={styles.form__message}>
           {this.state.list.map((item, index) => (
             <Message key={index} message={item} />
           ))}
         </div>
-        <div className="form__row">
+        <div className={styles.form__row}>
           <input
-            className="form__input"
+            className={styles.form__input}
             type="text"
             placeholder="Type message"
             value={this.state.message}
             onChange={this.handleChange.bind(this)}
             onKeyPress={this.handleKeyPress.bind(this)}
           />
-          <button className="form__button" onClick={this.handleSend.bind(this)}>
+          <button
+            className={styles.form__button}
+            onClick={this.handleSend.bind(this)}
+          >
             send
           </button>
         </div>

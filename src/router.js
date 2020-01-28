@@ -41,6 +41,7 @@ class Routed extends Component {
               <Route path="/chat" component={Chat} />
             </Switch>
           )}
+          <Route component={Login} />
         </Switch>
       </Router>
     );

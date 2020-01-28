@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Chat.module.css';
 import Form from '../Form/Form';
 import firebase from 'firebase';
-import { fire, config } from '../../../config/Fire';
 import styles from './Chat.module.css';
 
 class Chat extends Component {
@@ -26,18 +25,9 @@ class Chat extends Component {
     return (
       <div className={styles.chat}>
         <div className={styles.chat__header}>
-          {/*<img src={logo} className="chat__logo" alt="logo" />*/}
           <h2>Leave a Message For Your Circle</h2>
-          {
-            <button
-              className="chat__button"
-              onClick={this.handleLogOut.bind(this)}
-            >
-              Logout
-            </button>
-          }
         </div>
-        <div className="chat__list">
+        <div className={styles.chat__list}>
           <Form user={this.state.user} />
         </div>
       </div>
@@ -45,3 +35,12 @@ class Chat extends Component {
   }
 }
 export default Chat;
+
+// {/*
+//   <button
+//     className="chat__button"
+//     onClick={this.handleLogOut.bind(this)}
+//   >
+//     Logout
+//   </button>*/}
+// {/*<img src={logo} className="chat__logo" alt="logo" />*/}
