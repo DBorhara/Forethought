@@ -1,4 +1,8 @@
-import firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/storage';
+import 'firebase/firestore';
 
 const config = {
   apiKey: 'AIzaSyBVOaLZys61zNvDV_nH_mYJ9MpB3VqsgMU',
@@ -10,11 +14,14 @@ const config = {
   appId: '1:805898491412:web:4272c289e99d643625b901',
   measurementId: 'G-CJJB42V6W8',
 };
+firebase.initializeApp(config);
 
-const fire = firebase.initializeApp(config);
+const fire = firebase;
+const store = firebase.firestore();
+const storage = firebase.storage();
+const db = firebase.firestore();
 const auth = new firebase.auth.GoogleAuthProvider();
 
-const db = firebase.firestore();
 // db.settings({ timestampsInSnapshots: true });
 
-export { db, fire, auth };
+export { fire, store, storage, db, auth, config };

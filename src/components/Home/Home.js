@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-import { fire, db, auth } from '../../config/Fire';
-import axios from 'axios';
-import UserNavbar from '../Navbar/UserNavBar/UserNavbar';
-import firebase from 'firebase';
+import { fire } from '../../config/Fire';
 import Aux from '../../hoc/Aux/Aux';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
+      user: null,
     };
-  }
-
-  componentDidMount() {
-    console.log(firebase.auth.currentUser);
   }
 
   render() {
@@ -30,9 +23,9 @@ class Home extends Component {
         />
         <p>
           Welcome,{' '}
-          {firebase.auth().currentUser.displayName
-            ? firebase.auth().currentUser.displayName
-            : 'NO NAME MCGEE'}
+          {fire.auth().currentUser.displayName
+            ? fire.auth().currentUser.displayName
+            : 'NO NAME'}
         </p>
       </Aux>
     );

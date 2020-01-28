@@ -49,7 +49,7 @@ class GuestNavbar extends Component {
           <Nav className="mr-auto">
             <Nav.Link href="#demo">Demo</Nav.Link>
             <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Circles</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Squares</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Triangles</NavDropdown.Item>
@@ -59,8 +59,8 @@ class GuestNavbar extends Component {
           </Nav>
 
           <Nav>
-            <Nav.Link onClick={this.login}>Login</Nav.Link>
-            <Nav.Link eventKey={2} href="">
+            <Nav.Link href="#login">Login</Nav.Link>
+            <Nav.Link eventKey={2} href="#signup">
               Sign Up
             </Nav.Link>
           </Nav>

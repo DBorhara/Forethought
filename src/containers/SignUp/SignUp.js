@@ -4,9 +4,7 @@ import OAuthButton from '../../components/UI/OAuthButton/OAuthButton';
 
 import { Button, Form } from 'react-bootstrap';
 
-// import UserNavbar from '../../components/Navbar/UserNavBar/UserNavbar';
-
-class Login extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
 
@@ -20,14 +18,16 @@ class Login extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  login = event => {
+  signup = event => {
     event.preventDefault();
     fire
       .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(user => {})
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(user => {
+        console.log(user);
+      })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       });
   };
 
@@ -65,8 +65,8 @@ class Login extends Component {
           <Form.Group controlId="formBasicCheckbox">
             <Form.Check type="checkbox" label="Check me out" />
           </Form.Group>
-          <Button variant="success" type="submit" onClick={this.login}>
-            Log In
+          <Button variant="primary" type="submit" onClick={this.signup}>
+            Sign Up
           </Button>
         </Form>
         <OAuthButton />
@@ -74,4 +74,4 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+export default SignUp;

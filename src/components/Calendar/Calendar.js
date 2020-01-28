@@ -19,6 +19,7 @@ class MyCalendar extends Component {
 
   componentDidMount() {
     getEvents(events => {
+      console.log('EVENTS', events);
       this.setState({ events });
     });
   }

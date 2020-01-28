@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
-import MyCalendar from '../../Calendar/Calendar';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import axios from 'axios';
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button,
-  Container,
-} from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 class UserNavbar extends Component {
   constructor(props) {
@@ -19,7 +9,6 @@ class UserNavbar extends Component {
     this.state = {
       user: {},
     };
-    console.log('User Name');
   }
 
   handleLogoutClick = () => {
@@ -35,8 +24,8 @@ class UserNavbar extends Component {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link href="#calendar">Calendar</Nav.Link>
-            <Nav.Link href="#tasks">Tasks</Nav.Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+            <Nav.Link href="#chat">Chat</Nav.Link>
+            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Circles</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Squares</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Triangles</NavDropdown.Item>
